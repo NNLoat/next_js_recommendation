@@ -22,11 +22,6 @@ def item_name_to_id(name:str, df:pd.DataFrame):
     
     return id_map.get(name)
 
-def import_dataset():
-    tmp = pd.read_csv('./processed_dataset.csv')
-    tmp['new'] = tmp['new'].apply(ast.literal_eval)
-    return tmp
-
 
 def processed_dataset(dataset_path):
     tmp_df = pd.read_csv(dataset_path)
@@ -34,15 +29,8 @@ def processed_dataset(dataset_path):
     return tmp_df
 
 
-def apriori_rules(dataset, min_support,df, to_find_name):
-    # te = TransactionEncoder()
-    # te_ary = te.fit(dataset['new']).transform(dataset['new'])
-    # dataset_df = pd.DataFrame(te_ary, columns=te.columns_)
-    # # apriori
-    # frequent_itemsets = apriori(dataset_df, min_support=min_support,use_colnames=True)
-    # rules = association_rules(frequent_itemsets, metric='lift', min_threshold=1)
-    # rule2 = rules[ (rules['confidence'] > 0.5) & (rules['lift'] > 1) ]
-    rule2 = pd.read_csv('./apriori_rules.csv')
+def apriori_rules(df, to_find_name):
+    rule2 = pd.read_csv('./csv/apriori_rules.csv')
 
     res = []
     item_to_find = df[df['product description_eng'] == to_find_name]['product description_eng'].values[0]
@@ -92,15 +80,15 @@ def cosine_sim_different_cluster(emb_index, df, embeddings):
 def main_model_function(product_id, df):
     with open('./desc_eng_embedding.npy', 'rb') as f:
         embeddings =np.load(f)
-    min_support = 0.07
+    # min_support = 0.07
     to_find_name = df[df['product_id'] == product_id]['product description_eng'].values[0]
     emb_index = df.index[df['product_id'] == product_id].tolist()[0]
     print(emb_index)
     
-    dataset = import_dataset()
+    # dataset = import_dataset()
     
     res = {
-        'apriori': apriori_rules(dataset, min_support,df,to_find_name),
+        'apriori': apriori_rules(df,to_find_name),
         'cosine': cosine_sim_same_cluster(emb_index, df, embeddings),
         'cluster': cosine_sim_different_cluster(emb_index, df, embeddings)
     }

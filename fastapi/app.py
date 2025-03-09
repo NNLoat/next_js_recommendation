@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # excel_file_name = './item_dataset.xlsx'
 # df = pd.read_excel('./item_dataset.xlsx', sheet_name='Sheet1')
-df = pd.read_csv('./Recommendation_item_data.csv')
+df = pd.read_csv('./csv/Recommendation_item_data.csv')
 app = FastAPI()
 
 # Allow CORS
