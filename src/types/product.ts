@@ -4,5 +4,8 @@ export interface Product {
     product_name: string;
     price: number;
     image_thumb: string;
+    unit: string;
+    product_type: string;
+    product_description_thai: string;
 }
   

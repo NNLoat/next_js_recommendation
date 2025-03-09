@@ -6,4 +6,4 @@ const BestSellingCementSchema = new mongoose.Schema({
 });
 
 export default mongoose.models.BestSellingCement ||
-  mongoose.model("BestSellingCement", BestSellingCementSchema);
+  mongoose.model("BestSellingCement", BestSellingCementSchema, "bestsellingcements");

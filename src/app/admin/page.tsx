@@ -1,14 +1,3 @@
-// import BestProduct from "@/components/bestSeller"
-
-// export default function adminPage(){
-
-//     return(
-//         <div className="w-full">
-//             <BestProduct />
-//         </div>
-//     )
-// }
-
 "use client";
 
 import { useEffect, useState } from "react";

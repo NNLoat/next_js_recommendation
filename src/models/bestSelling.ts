@@ -5,4 +5,4 @@ const BestSellingAllProductSchema = new mongoose.Schema({
   rank: {type: Number, required:true}
 });
 
-export default mongoose.models.BestSellingAllProduct || mongoose.model("BestSellingAllProduct", BestSellingAllProductSchema);
+export default mongoose.models.BestSellingAllProduct || mongoose.model("BestSellingAllProduct", BestSellingAllProductSchema, "bestsellingallproducts");

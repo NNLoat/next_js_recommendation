@@ -2,13 +2,26 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectToDB } from "@/lib/mongodb";
 import Product from "@/models/product";
 import BestSellingCement from "@/models/bestSellingCement"; // New model
+import product from "@/models/product";
+
+
+
 
 export async function GET(req: NextRequest) {
     try {
         await connectToDB();
 
-        // 1️⃣ Fetch Best-Selling Cement Products from `BestSellingCement`
-        const bestSellingCement = await BestSellingCement.aggregate([
+        const cementProductIds = await Product.find({ product_type: "ปูนถุง" }).distinct("product_id");
+        // Fetch All Cement Products
+        const allCementProducts = await Product.find({ product_type: "ปูนถุง" }).select(
+            "_id product_id product_name price image_thumb unit product_description_thai"
+        );
+
+         // Fetch Best-Selling Cement Products from `BestSellingCement`
+         const bestSellingCement = await BestSellingCement.aggregate([
+            {
+                $match: { product_id: { $in: cementProductIds } } // Filter to only "ปูนถุง" products
+            },
             {
                 $lookup: {
                     from: "products", // Join with "products"
@@ -26,15 +39,12 @@ export async function GET(req: NextRequest) {
                     product_name: "$productDetails.product_name",
                     price: "$productDetails.price",
                     image_thumb: "$productDetails.image_thumb",
+                    unit: "$productDetails.unit",
+                    product_description_thai: "$productDetails.product_description_thai",
                     rank: 1
                 }
             }
         ]);
-
-        // 2️⃣ Fetch All Cement Products
-        const allCementProducts = await Product.find({ product_type: "ปูนถุง" }).select(
-            "_id product_id product_name price image_thumb"
-        );
 
         return NextResponse.json({
             bestSellingCement,

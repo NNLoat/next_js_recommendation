@@ -7,7 +7,7 @@ const AboutUsCard = () => {
         {/* Left side: Image */}
         <div className="w-1/2 relative">
           <Image
-            src="/images/about-us.jpg" // Replace with your image path
+            src="/images/about-us.png" // Replace with your image path
             alt="About Us"
             layout="fill"
             objectFit="cover"

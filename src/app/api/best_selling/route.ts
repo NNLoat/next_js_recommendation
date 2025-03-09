@@ -26,6 +26,8 @@ export async function GET(req: NextRequest) {
             product_name: "$productDetails.product_name",
             price: "$productDetails.price",
             image_thumb: "$productDetails.image_thumb",
+            unit: "$productDetails.unit",
+            product_description_thai: "$productDetails.product_description_thai",
             rank: 1
           } 
         }

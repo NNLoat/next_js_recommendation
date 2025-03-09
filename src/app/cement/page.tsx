@@ -5,15 +5,6 @@ import BestProduct from "@/components/bestSeller";
 import { Product } from "@/types/product"; // Adjust the path based on your project structure
 import { useEffect, useState } from "react";
 
-// const products = [
-//     { id: 1, name: "Product 1", price: "$29.99", image: "/images/product1.jpg" },
-//     { id: 2, name: "Product 2", price: "$49.99", image: "/images/product2.jpg" },
-//     { id: 3, name: "Product 3", price: "$39.99", image: "/images/product3.jpg" },
-//     { id: 4, name: "Product 4", price: "$19.99", image: "/images/product4.jpg" },
-//     { id: 5, name: "Product 5", price: "$59.99", image: "/images/product5.jpg" },
-//     { id: 6, name: "Product 6", price: "$89.99", image: "/images/product6.jpg" },
-    
-//   ];
 
 export default function cement() {
   const [bestSellingCement, setBestSellingCement] = useState<Product[]>([]);

@@ -2,14 +2,8 @@
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"; // Import updated Carousel components
 import ProductCard from "./productCard"; // Import your ProductCard component
+import { Product } from "@/types/product";
 
-interface Product {
-  _id: string; // MongoDB document ID
-  product_id: string; // Product ID from MongoDB
-  product_name: string; // Product name from MongoDB
-  price: number;
-  image_thumb: string; // Image field from MongoDB
-}
 
 interface ProductCarouselProps {
   products: Product[];
@@ -28,7 +22,7 @@ const ProductCarousel = ({ products }: ProductCarouselProps) => {
                     image_thumb={product.image_thumb}
                     product_name={product.product_name}
                     price={product.price}
-                  />
+                    unit={product.unit} _id={""} product_description_thai={product.product_description_thai} product_type={product.product_type}                  />
                 </div>
               </CarouselItem>
             ))}

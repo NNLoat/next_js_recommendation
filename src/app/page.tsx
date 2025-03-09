@@ -21,18 +21,6 @@ export default function Home() {
     { label: "เหล็กเส้น", href: "/Metal" },
   ];
 
-  // const products = [
-  //   { _id: "1", product_id: "1", product_name: "Product 1", price: 29.99, image_thumb: "/images/product1.jpg" },
-  //   { _id: "2", product_id: "2", product_name: "Product 2", price: 49.99, image_thumb: "/images/product2.jpg" },
-  //   { _id: "3", product_id: "3", product_name: "Product 3", price: 39.99, image_thumb: "/images/product3.jpg" },
-  //   { _id: "4", product_id: "4",  product_name: "Product 4", price: 19.99, image_thumb: "/images/product4.jpg" },
-  //   { _id: "5", product_id: "5", product_name: "Product 5", price: 59.99, image_thumb: "/images/product5.jpg" },
-  //   { _id: "6", product_id: "6", product_name: "Product 6", price: 89.99, image_thumb: "/images/product6.jpg" },
-  //   { _id: "7", product_id: "7", product_name: "Product 7", price: 69.99, image_thumb: "/images/product7.jpg" },
-  //   { _id: "8", product_id: "8", product_name: "Product 8", price: 79.99, image_thumb: "/images/product8.jpg" },
-  //   { _id: "9", product_id: "9", product_name: "Product 9", price: 99.99, image_thumb: "/images/product9.jpg" },
-  //   { _id: "10", product_id: "10", product_name: "Product 10", price: 129.99, image_thumb: "/images/product10.jpg" },
-  // ];
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
@@ -41,6 +29,7 @@ export default function Home() {
       .then((data) => setProducts(data))
       .catch((err) => console.error("Error fetching best-selling products:", err));
   }, []);
+
 
   return (
     <div className="w-full">
@@ -56,9 +45,10 @@ export default function Home() {
               <GoogleMapEmbed />
               </div>
               
-              <div className="space-y-6 p-8">
-              <h3 className="text-xl font-medium">บริษัท โลหะกิจอุดร จำกัด</h3>
+              <div className="space-y-6 p-8 flex justify-center items-center">
+              
               <div className="space-y-4">
+              <h3 className="text-xl font-medium">บริษัท โลหะกิจอุดร จำกัด</h3>
                 <p>
                   <span className="font-medium">หมวดหมู่ :</span> วัสดุก่อสร้าง
                 </p>
