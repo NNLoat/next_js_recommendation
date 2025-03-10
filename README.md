@@ -17,11 +17,13 @@ bun dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 # Running the project
-1. git clone ```bash
-https://github.com/NNLoat/next_js_recommendation.git
-
-cd next_js_recommendation```
-2. 
+```
+git clone https://github.com/NNLoat/next_js_recommendation.git
+cd next_js_recommendation
+npm install
+cd fast api
+pip install requirements.txt
+```
 # Running model api (fastapi)
 
 
