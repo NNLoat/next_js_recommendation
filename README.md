@@ -16,10 +16,13 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+# Running the project
+1. git clone ```bash
+https://github.com/NNLoat/next_js_recommendation.git
+cd next_js_recommendation```
+2. 
 # Running model api (fastapi)
-1. go to fastapi folder
-2. install requirements.txt
-3. start the server by `fastapi dev app.py`
+
 
 <!-- You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
