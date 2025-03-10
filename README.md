@@ -19,6 +19,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 # Running the project
 1. git clone ```bash
 https://github.com/NNLoat/next_js_recommendation.git
+
 cd next_js_recommendation```
 2. 
 # Running model api (fastapi)
