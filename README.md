@@ -81,7 +81,14 @@ Below is an overview of the project's folder structure:
     ```bash
     cd fastapi
     pip install requirements.txt
+4. เปิด server model
+    ``` bash
+    fastapi run app.py
+5. เปิด server nextjs
+    ```bash
     cd ..
+    npm run dev
+6. เข้าไปที่เว็บได้ที่หน้า ```http://localhost:3000```
 
 
 <!-- You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
