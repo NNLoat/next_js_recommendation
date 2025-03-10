@@ -24,7 +24,17 @@ This is the nextjs project for showing products / managing products in the e-com
 
 Below is an overview of the project's folder structure:
 
-/ ├── public/ ├── src/ │ ├── app/ │ ├── components/ │ ├── lib/ │ ├── models/ │ ├── types/ ├── .env.local ├── middleware.ts
+.
+└── next_js_recommendation/
+    ├── fastapi
+    ├── public
+    └── src/
+        ├── app
+        ├── components
+        ├── lib
+        ├── models
+        ├── types
+        └── middleware.ts
 
 
 ### `/public`
