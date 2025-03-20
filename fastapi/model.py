@@ -51,25 +51,11 @@ def calculate_least_cosine_distances(input_emb, embeddings):
         distance.append(cosine(input_emb, emb))
     return np.argsort(distance), [distance[x] for x in np.argsort(distance)]
 
-
-def cosine_sim_different_cluster(emb_index, df, embeddings):
-    num_clusters = len(set(df['product_type'].values))
-    kmeans = KMeans(n_clusters=num_clusters, random_state=42)
-    clusters = kmeans.fit_predict(embeddings)
-
-    tmp_emb = []
-    for i in range(len(clusters)):
-        if clusters[i] != clusters[emb_index]:
-            tmp_emb.append(embeddings[i])
-    
-    # similar, distance = calculate_least_cosine_distances(embeddings[emb_index], tmp_emb)
-    similar, distance = calculate_least_cosine_distances(embeddings[emb_index], embeddings)
-    similar = [similar[i] for i in range(len(similar)) if clusters[i] != clusters[emb_index]]
-    distance = [distance[i] for i in range(len(distance)) if clusters[i] != clusters[emb_index]]
-    similar, distance = similar[1:15], distance[1:15]
-    # print(similar)
-    tmp_df = df.iloc[similar]
-    return tmp_df['product_id'].values.tolist()
+def cosine_sim_same_cluster(emb_index, df, embeddings):
+     similar, distance = calculate_least_cosine_distances(embeddings[emb_index], embeddings)
+     similar, distance = similar[1:6], distance[1:6]
+     tmp_df = df.iloc[similar]
+     return tmp_df['product_id'].values.tolist()
 
 
 
