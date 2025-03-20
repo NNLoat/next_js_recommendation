@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" version="25.0.3" pages="2">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36" version="26.0.16" pages="3">
   <diagram name="Page-1" id="hcyrd7Siia_TjLPj0NBE">
     <mxGraphModel dx="984" dy="1668" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -246,11 +246,87 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="L_pfM7C56kWr7R-ZOFLD" name="Page-2">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram id="L_pfM7C56kWr7R-ZOFLD" name="User scenario">
+    <mxGraphModel dx="2460" dy="1418" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="HygjvQpd_wKVlrhDktA4-4" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="HygjvQpd_wKVlrhDktA4-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="550" as="sourcePoint" />
+            <mxPoint x="439.9999999999999" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HygjvQpd_wKVlrhDktA4-8" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="HygjvQpd_wKVlrhDktA4-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="590" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HygjvQpd_wKVlrhDktA4-9" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="HygjvQpd_wKVlrhDktA4-7">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="620" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="HygjvQpd_wKVlrhDktA4-1" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="560" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="HygjvQpd_wKVlrhDktA4-5" value="ดูสินค้าในแต่ละหมวด" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="430" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HygjvQpd_wKVlrhDktA4-6" value="ค้นหาสินค้า" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="520" width="190" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="HygjvQpd_wKVlrhDktA4-7" value="ดูชุดสินค้าที่เกี่ยวข้องกับสินค้าที่สนใจ" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="620" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="4cWkNsBIUGhHFieTJc-G-6" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="4cWkNsBIUGhHFieTJc-G-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="520" as="sourcePoint" />
+            <mxPoint x="929.9999999999999" y="510" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4cWkNsBIUGhHFieTJc-G-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="4cWkNsBIUGhHFieTJc-G-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="800" y="600" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4cWkNsBIUGhHFieTJc-G-8" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="760" y="530" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4cWkNsBIUGhHFieTJc-G-9" value="ล็อกอินเข้าระบบแก้ไขสินค้า" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="970" y="400" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4cWkNsBIUGhHFieTJc-G-10" value="อ่าน เพิ่ม แก้ไข และ ลบ สินค้า" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="980" y="590" width="190" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="FcSocENbBHbqTCDPDKsB" name="Admin scenario">
+    <mxGraphModel dx="984" dy="567" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="iUAufgiJBbD8abLC-6jx-1" value="" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="iUAufgiJBbD8abLC-6jx-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="550" as="sourcePoint" />
+            <mxPoint x="439.9999999999999" y="540" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iUAufgiJBbD8abLC-6jx-2" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=none;startFill=0;" edge="1" parent="1" target="iUAufgiJBbD8abLC-6jx-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="310" y="630" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="iUAufgiJBbD8abLC-6jx-4" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="560" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="iUAufgiJBbD8abLC-6jx-5" value="ล็อกอินเข้าระบบแก้ไขสินค้า" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="430" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="iUAufgiJBbD8abLC-6jx-6" value="อ่าน เพิ่ม แก้ไข และ ลบ สินค้า" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="490" y="620" width="190" height="80" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>

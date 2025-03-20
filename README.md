@@ -24,7 +24,7 @@ This is the nextjs project for showing products / managing products in the e-com
 
 Below is an overview of the project's folder structure:
 
-.
+\.
 └── next_js_recommendation/
     ├── fastapi
     ├── public

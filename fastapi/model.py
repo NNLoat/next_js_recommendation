@@ -6,8 +6,7 @@ import numpy as np
 from scipy.spatial.distance import cosine
 from sklearn.cluster import KMeans
 
-
-
+# เปลี่ยน รหัสสินค้าเป็นชื่อสินค้า เช่น 100610 -> ท่อ PB
 def id_to_item_name(id: str, df:pd.DataFrame):
     item_map = {}
     for i in range(len(df)):
@@ -15,6 +14,9 @@ def id_to_item_name(id: str, df:pd.DataFrame):
     
     return item_map.get(id)
 
+
+
+# เปลี่ยน ชื่อสินค้าเป็นรหัสสินค้า เช่น ท่อ PB -> 100610
 def item_name_to_id(name:str, df:pd.DataFrame):
     id_map = {}
     for i in range(len(df)):
@@ -23,19 +25,17 @@ def item_name_to_id(name:str, df:pd.DataFrame):
     return id_map.get(name)
 
 
-def processed_dataset(dataset_path):
-    tmp_df = pd.read_csv(dataset_path)
-    tmp_df['new'] = tmp_df['new'].apply(ast.literal_eval)
-    return tmp_df
-
-
 def apriori_rules(df, to_find_name):
+    # โหลด apriori ที่เราคิดไว้แล้ว
     rule2 = pd.read_csv('./csv/apriori_rules.csv')
 
+    # ตั้งลิสต์ที่จะเก็บสินค้า
     res = []
     item_to_find = df[df['product description_eng'] == to_find_name]['product description_eng'].values[0]
     for i in range(len(rule2['antecedents'].apply(list).values.tolist())):
+        # ถ้าสินค้าเกี่ยวข้อง
         if item_to_find in rule2['antecedents'].apply(list).values.tolist()[i]:
+            # ใส่เข้าไปในผลลัพธ์ที่เกี่ยวข้อง
             res.append(rule2['consequents'].apply(list).values.tolist()[i])
 
     for i  in range(len(res)):
@@ -51,11 +51,6 @@ def calculate_least_cosine_distances(input_emb, embeddings):
         distance.append(cosine(input_emb, emb))
     return np.argsort(distance), [distance[x] for x in np.argsort(distance)]
 
-def cosine_sim_same_cluster(emb_index, df, embeddings):
-    similar, distance = calculate_least_cosine_distances(embeddings[emb_index], embeddings)
-    similar, distance = similar[1:6], distance[1:6]
-    tmp_df = df.iloc[similar]
-    return tmp_df['product_id'].values.tolist()
 
 def cosine_sim_different_cluster(emb_index, df, embeddings):
     num_clusters = len(set(df['product_type'].values))
@@ -77,25 +72,24 @@ def cosine_sim_different_cluster(emb_index, df, embeddings):
     return tmp_df['product_id'].values.tolist()
 
 
+
+# ฟังก์ชั่น main
 def main_model_function(product_id, df):
+    # โหลดตัว embedding ของคำอธิบายสินค้า
     with open('./desc_eng_embedding.npy', 'rb') as f:
         embeddings =np.load(f)
-    # min_support = 0.07
     to_find_name = df[df['product_id'] == product_id]['product description_eng'].values[0]
     emb_index = df.index[df['product_id'] == product_id].tolist()[0]
     print(emb_index)
     
-    # dataset = import_dataset()
     
     res = {
         'apriori': apriori_rules(df,to_find_name),
         'cosine': cosine_sim_same_cluster(emb_index, df, embeddings),
-        'cluster': cosine_sim_different_cluster(emb_index, df, embeddings)
     }
 
-    res2 = res['apriori'] + res['cosine'] + res['cluster']
+    res2 = res['apriori'] + res['cosine']
     res2 = list(dict.fromkeys(res2))[:5]
-    # print(res)
     return {'item': res2}
 
 
