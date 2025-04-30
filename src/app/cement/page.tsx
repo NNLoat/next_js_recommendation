@@ -45,16 +45,4 @@ export default function cement() {
       </div>
     </div>
   );
-    // return (
-    //     <div className="w-full">
-    //          <BestProduct />
-    //           <div className="p-8 w-full">
-    //             <ProductCarousel products={products} />
-    //           </div>
-    //           <div className="flex items-center justify-center my-8">
-    //           <span className="mx-4 text-blacks-700 text-xl font-semibold">ปูนถุง</span>
-    //           </div>
-    //           <ProductGrid products={products} />
-    //     </div>
-    // )
 }

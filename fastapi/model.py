@@ -25,35 +25,37 @@ def item_name_to_id(name:str, df:pd.DataFrame):
     return id_map.get(name)
 
 
-def apriori_rules(df, to_find_name):
+def apriori_rules(df, product_id):
     # โหลด apriori ที่เราคิดไว้แล้ว
-    rule2 = pd.read_csv('./csv/apriori_rules.csv')
-
+    rule2 = pd.read_csv('./csv/apriori_rules_new.csv')
+    rule2['antecedents'] = rule2['antecedents'].apply(ast.literal_eval)
+    rule2['consequents'] = rule2['consequents'].apply(ast.literal_eval)
     # ตั้งลิสต์ที่จะเก็บสินค้า
     res = []
-    item_to_find = df[df['product description_eng'] == to_find_name]['product description_eng'].values[0]
+    # item_to_find = df[df['product description_eng'] == to_find_name]['product description_eng'].values[0]
     for i in range(len(rule2['antecedents'].apply(list).values.tolist())):
         # ถ้าสินค้าเกี่ยวข้อง
-        if item_to_find in rule2['antecedents'].apply(list).values.tolist()[i]:
+        if product_id in rule2['antecedents'].apply(list).values.tolist()[i]:
             # ใส่เข้าไปในผลลัพธ์ที่เกี่ยวข้อง
             res.append(rule2['consequents'].apply(list).values.tolist()[i])
-
-    for i  in range(len(res)):
-        res[i] = [item_name_to_id(x,df) for x in res[i]]
     # flatten list
     res = [z for x in res for z in x]
+    res = list(set(res))
     return res
 
 
 def calculate_least_cosine_distances(input_emb, embeddings):
     distance = []
     for emb in embeddings:
-        distance.append(cosine(input_emb, emb))
+        if np.array_equal(emb, input_emb) == False:
+            distance.append(cosine(input_emb, emb))
     return np.argsort(distance), [distance[x] for x in np.argsort(distance)]
 
 def cosine_sim_same_cluster(emb_index, df, embeddings):
      similar, distance = calculate_least_cosine_distances(embeddings[emb_index], embeddings)
-     similar, distance = similar[1:6], distance[1:6]
+     print(similar, distance)
+    #  similar, distance = similar[1:6], distance[1:6]
+     similar, distance = similar[:6], distance[:6]
      tmp_df = df.iloc[similar]
      return tmp_df['product_id'].values.tolist()
 
@@ -67,16 +69,21 @@ def main_model_function(product_id, df):
     to_find_name = df[df['product_id'] == product_id]['product description_eng'].values[0]
     emb_index = df.index[df['product_id'] == product_id].tolist()[0]
     print(emb_index)
+    print(to_find_name)
     
     
     res = {
-        'apriori': apriori_rules(df,to_find_name),
+        'apriori': apriori_rules(df,product_id),
         'cosine': cosine_sim_same_cluster(emb_index, df, embeddings),
     }
 
-    res2 = res['apriori'] + res['cosine']
+    if product_id in res['cosine']:
+        res['cosine'].remove(product_id)
+
+    # res2 = res['apriori'] + res['cosine']
+    res2 = res['cosine']
     res2 = list(dict.fromkeys(res2))[:5]
-    return {'item': res2}
+    return {'item': res2, 'cosine': res['cosine']}
 
 
     
